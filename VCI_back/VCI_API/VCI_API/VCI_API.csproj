@@ -102,7 +102,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+    <Folder Include="Models\BLL\" />
+    <Folder Include="Models\DAL\" />
+    <Folder Include="Models\DTO\" />
+    <Folder Include="Models\Utils\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
