@@ -1,8 +1,9 @@
-﻿namespace VCI_API.Models.DTO
-{
-    public class BaseDTO<T>
-    {
-        public T Id { get; set; }
+﻿using System;
 
+namespace VCI_API.Models.DTO
+{
+    public abstract class BaseDTO
+    {
+        public Guid Id { get; set; }
     }
 }

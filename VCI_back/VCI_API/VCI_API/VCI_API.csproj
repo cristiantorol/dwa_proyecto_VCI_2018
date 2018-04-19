@@ -108,6 +108,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DAL\BaseDAL.cs" />
+    <Compile Include="Models\DTO\BaseDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,8 +125,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\BLL\" />
-    <Folder Include="Models\DAL\" />
-    <Folder Include="Models\DTO\" />
     <Folder Include="Models\Utils\" />
   </ItemGroup>
   <PropertyGroup>
