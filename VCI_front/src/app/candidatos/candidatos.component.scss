@@ -1,0 +1,34 @@
+.candidatosCont{
+    margin-top: 30px;
+    ul{
+        margin:0 auto;
+        list-style: none;
+        width: 77%;
+        li{
+            display:inline-block;
+            margin-left: 22px;
+            .info{
+                margin-top: 89%;
+                border: 1px solid;
+                width: 200px;
+                p{
+                    font-family: 'Fira Sans', sans-serif;
+                    padding: 10px;
+                }
+                .name{
+                    margin-bottom: -21px;
+                    margin-top: 11px;
+                    text-align: center;
+                    font-size: 30px;
+                }
+            }
+            .photo{
+                    img{
+                    position: absolute;
+                    height: 200px;
+                    width: 200px;
+                }
+            }
+        }
+    }
+}

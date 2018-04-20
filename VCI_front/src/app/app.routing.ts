@@ -2,10 +2,11 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MainComponent } from './main/main.component';
-import { HeaderComponent } from './header/header.component';
+import { CandidatosComponent } from './candidatos/candidatos.component';
 
 const appRoutes: Routes = [
-        { path:'main', component:MainComponent }
+        { path:'main', component:MainComponent },
+        { path:'candidatos',component:CandidatosComponent}
         // { path:'**', component:FrutasComponent }
     ];
 

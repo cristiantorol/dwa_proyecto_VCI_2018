@@ -11,15 +11,20 @@ app-header.menuCont{
         margin-left: -2%;
         list-style: none;
         li{
-            font-family: 'Anton', sans-serif;
             color:#F3F3F3;
-            font-size: 20px;
             display: inline-block;
             margin-left: 15px;
             border-right: 1px solid;
             padding-right: 28px;
             &:hover{
                 cursor: pointer;
+            }
+            a{
+                color:#F3F3F3;
+                text-decoration: none;
+                font-family: 'Anton', sans-serif;
+                font-size: 20px;
+                text-anchor: none;
             }
         }
     }
