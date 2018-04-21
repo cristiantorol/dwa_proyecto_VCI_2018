@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { CandidatosComponent } from './candidatos/candidatos.component';
+import { CandidatoSinglepageComponent } from './candidato-singlepage/candidato-singlepage.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { CandidatosComponent } from './candidatos/candidatos.component';
     AppComponent,
     HeaderComponent,
     MainComponent,
-    CandidatosComponent
+    CandidatosComponent,
+    CandidatoSinglepageComponent
   ],
   imports: [
     BrowserModule,
