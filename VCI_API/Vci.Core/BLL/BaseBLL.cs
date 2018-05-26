@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
-using VCI_API.Models.DTO;
+using VCI.DTO;
 
-namespace VCI_API.Models.BLL
+namespace VCI.BLL
 {
     public abstract class BaseBLL<T> where T : BaseDTO
     {
@@ -34,6 +34,7 @@ namespace VCI_API.Models.BLL
             }
             Database = Client.GetDatabase(DatabaseName);
             Collection = Database.GetCollection<T>(CollectionName);
+            SetBasicProjection();
         }
 
         /// <summary>
@@ -108,6 +109,6 @@ namespace VCI_API.Models.BLL
 
         public abstract T Create(T element);
         public abstract T Update(T element);
-
+        public abstract void SetBasicProjection();
     }
 }

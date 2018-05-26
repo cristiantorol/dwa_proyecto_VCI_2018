@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using VCI_API.Models.Utils;
+using VCI.Utils;
 
-namespace VCI_API.Models.DTO.Request
+namespace VCI.DTO.Request
 {
     public class Response<T>
     {

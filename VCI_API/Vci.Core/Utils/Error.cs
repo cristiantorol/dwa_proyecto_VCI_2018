@@ -1,4 +1,4 @@
-﻿namespace VCI_API.Models.Utils
+﻿namespace VCI.Utils
 {
     public enum Error
     {

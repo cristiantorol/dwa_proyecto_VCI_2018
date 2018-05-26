@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace VCI_API.Models.DTO.Request
+namespace VCI.DTO.Request
 {
     public class Login
     {

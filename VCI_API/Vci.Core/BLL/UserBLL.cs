@@ -1,9 +1,9 @@
 ﻿using MongoDB.Driver;
 using System;
 using System.Threading.Tasks;
-using VCI_API.Models.DTO;
+using VCI.DTO;
 
-namespace VCI_API.Models.BLL
+namespace VCI.BLL
 {
     public class UserBLL : BaseBLL<UserDTO>
     {
@@ -13,15 +13,6 @@ namespace VCI_API.Models.BLL
 
         private UserBLL() : base("User") { }
 
-
-        public async Task<UserDTO> Login(string Username, string Password)
-        {
-            FilterDefinitionBuilder<UserDTO> builder = Builders<UserDTO>.Filter;
-            FilterDefinition<UserDTO> filter = builder.Eq(x => x.Email, Username) & builder.Eq(x => x.Password, Password);
-            UserDTO user  = await GetByFilter(filter);
-            return user;
-        }
-
         public override UserDTO Create(UserDTO element)
         {
             throw new NotImplementedException();
@@ -30,6 +21,11 @@ namespace VCI_API.Models.BLL
         public override UserDTO Update(UserDTO element)
         {
             throw new NotImplementedException();
+        }
+
+        public override void SetBasicProjection()
+        {
+
         }
     }
 }

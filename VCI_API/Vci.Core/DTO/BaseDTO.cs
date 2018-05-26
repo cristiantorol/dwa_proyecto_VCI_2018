@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace VCI_API.Models.DTO
+namespace VCI.DTO
 {
     public abstract class BaseDTO
     {
