@@ -4,6 +4,6 @@ namespace VCI_API.Models.DTO
 {
     public abstract class BaseDTO
     {
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
     }
 }

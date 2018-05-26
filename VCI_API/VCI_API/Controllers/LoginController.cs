@@ -1,29 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
+using VCI_API.Models.BLL;
+using VCI_API.Models.DTO;
+using VCI_API.Models.DTO.Request;
+using VCI_API.Models.Utils;
 
 namespace VCI_API.Controllers
 {
     public class LoginController : ApiController
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
 
         // POST api/<controller>
-        public void Post([FromBody]string value)
+        public async Task<Response<UserDTO>> Post([FromBody]Login Login)
         {
+            Response<UserDTO> Result = new Response<UserDTO>();
+            UserDTO User;
+            try
+            {
+                User = await UserBLL.Instance.Login(Login.Email, Login.Password);
+                if(User == null)
+                {
+
+                }
+                else
+                {
+                    Result.Result = User;
+                    Result.Success = true;
+                }
+            }catch(Exception e)
+            {
+                Result.Error = Error.Random;
+            }
+            return Result;
         }
 
         // PUT api/<controller>/5

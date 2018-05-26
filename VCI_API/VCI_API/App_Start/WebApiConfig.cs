@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace VCI_API
 {
@@ -9,11 +7,13 @@ namespace VCI_API
     {
         public static void Register(HttpConfiguration config)
         {
-            // Configuración y servicios de API web
+
+            //Origines permitidos
+            var Cors = new EnableCorsAttribute("*", "*", "*");
+            config.EnableCors(Cors);
 
             // Rutas de API web
             config.MapHttpAttributeRoutes();
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

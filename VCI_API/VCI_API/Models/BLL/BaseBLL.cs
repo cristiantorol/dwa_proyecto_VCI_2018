@@ -6,34 +6,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using VCI_API.Models.DTO;
 
-namespace VCI_API.Models.DAL
+namespace VCI_API.Models.BLL
 {
     public abstract class BaseBLL<T> where T : BaseDTO
     {
-        private static IMongoClient client;
-        private IMongoDatabase database;
-        protected IMongoCollection<T> collection;
+        private static IMongoClient Client;
+        private IMongoDatabase Database;
 
-        private string databaseName;
-        private string collectionName;
-        protected ProjectionDefinition<T> projection;
+        private string DatabaseName;
+        private string CollectionName;
+
+        protected IMongoCollection<T> Collection;
+        protected ProjectionDefinition<T> Projection;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="collectionName">Nombre de la colección</param>
-        public BaseBLL(string collectionName)
+        /// <param name="CollectionName">Nombre de la colección</param>
+        public BaseBLL(string CollectionName)
         {
-            databaseName = ConfigurationManager.AppSettings["DbName"];
-            this.collectionName = collectionName;
+            DatabaseName = ConfigurationManager.AppSettings["DbName"];
+            this.CollectionName = CollectionName;
 
-            if (client == null)
+            if (Client == null)
             {
-                client = new MongoClient(ConfigurationManager.AppSettings["DbEndpoint"]);
+                Client = new MongoClient(ConfigurationManager.AppSettings["DbEndpoint"]);
             }
-            database = client.GetDatabase(databaseName);
-            collection = database.GetCollection<T>(collectionName);
-            SetBasicProjection();
+            Database = Client.GetDatabase(DatabaseName);
+            Collection = Database.GetCollection<T>(CollectionName);
         }
 
         /// <summary>
@@ -46,8 +46,8 @@ namespace VCI_API.Models.DAL
             FilterDefinition<T> filter = Builders<T>.Filter.Eq("id", id);
             FindOptions<T> options = new FindOptions<T>();
             options.Limit = 1;
-            options.Projection = projection;
-            var cursor = await collection.FindAsync(filter, options);
+            options.Projection = Projection;
+            var cursor = await Collection.FindAsync(filter, options);
             return cursor.First();
         }
 
@@ -59,8 +59,8 @@ namespace VCI_API.Models.DAL
         {
             FilterDefinition<T> filter = Builders<T>.Filter.Empty;
             FindOptions<T> options = new FindOptions<T>();
-            options.Projection = projection;
-            var cursor = await collection.FindAsync(filter, options);
+            options.Projection = Projection;
+            var cursor = await Collection.FindAsync(filter, options);
             return cursor.ToList();
         }
 
@@ -74,9 +74,9 @@ namespace VCI_API.Models.DAL
         {
             FilterDefinition<T> filter = Builders<T>.Filter.Eq(name, value);
             FindOptions<T> options = new FindOptions<T>();
-            options.Projection = projection;
+            options.Projection = Projection;
             options.Limit = 1;
-            var cursor = await collection.FindAsync(filter, options);
+            var cursor = await Collection.FindAsync(filter, options);
             return cursor.First();
         }
 
@@ -88,9 +88,9 @@ namespace VCI_API.Models.DAL
         public async Task<T> GetByFilter(FilterDefinition<T> filter)
         {
             FindOptions<T> options = new FindOptions<T>();
-            options.Projection = projection;
+            options.Projection = Projection;
             options.Limit = 1;
-            var cursor = await collection.FindAsync(filter, options);
+            var cursor = await Collection.FindAsync(filter, options);
             return cursor.First();
         }
 
@@ -101,16 +101,10 @@ namespace VCI_API.Models.DAL
         /// <returns></returns>
         protected T Insert(T element)
         {
-            element.id = Guid.NewGuid();
-            collection.InsertOne(element);
+            element.Id = Guid.NewGuid();
+            Collection.InsertOne(element);
             return element;
         }
-
-        /// <summary>
-        /// Asigna la proyección basica para las consultas
-        /// </summary>
-        /// <returns></returns>
-        public abstract void SetBasicProjection();
 
         public abstract T Create(T element);
         public abstract T Update(T element);
