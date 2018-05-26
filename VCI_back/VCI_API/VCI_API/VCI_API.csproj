@@ -108,8 +108,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DAL\BaseDAL.cs" />
-    <Compile Include="Models\DAL\UserDAL.cs" />
+    <Compile Include="Models\BLL\BaseBLL.cs" />
+    <Compile Include="Models\BLL\UserBLL.cs" />
     <Compile Include="Models\DTO\BaseDTO.cs" />
     <Compile Include="Models\DTO\RoleDTO.cs" />
     <Compile Include="Models\DTO\UserDTO.cs" />
@@ -127,7 +127,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Controllers\" />
-    <Folder Include="Models\BLL\" />
     <Folder Include="Models\Utils\" />
   </ItemGroup>
   <PropertyGroup>
