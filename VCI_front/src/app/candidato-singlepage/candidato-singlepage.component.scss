@@ -1,0 +1,63 @@
+.candidatoCont{
+    margin:2% auto;
+    width: 90%;
+    display: block;
+    background: #ADC7FA;
+    height: 100%;
+}
+
+.c_infoCont{
+    display: inline-block;
+    width: 18%;
+    font-family: 'Fira Sans', sans-serif;
+    padding:15px;
+    img{
+        width: 200px;
+        height: 200px;
+    }
+    .c_name{
+        text-align: center;
+        font-size: 30px;
+    }
+    
+}
+
+.propuestasCont{
+    margin-top:2%;
+    display: inline-block;
+    vertical-align: top;  
+    width:70%;
+    ul{
+        list-style: none;
+        li{
+            background-color: white; 
+            border: 1px solid;
+            margin-bottom: 10px;
+            padding:15px;
+            .title{
+                font-family: 'Black Han Sans', sans-serif;
+                font-size:30px;
+                margin-top: -2px;
+                margin-bottom: -6px;
+            }
+            p{
+                font-family: 'Fira Sans', sans-serif;
+            }
+        }
+    }
+    hr{
+        margin-left: 38px;
+    }
+}
+
+.bioCont{
+    margin-left:38px;
+    .bio_title{
+        font-family: 'Black Han Sans', sans-serif;
+        font-size:30px;
+        text-align: right;
+    }
+    p{
+        font-family: 'Fira Sans', sans-serif;  
+    }
+}
