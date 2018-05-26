@@ -1,6 +1,8 @@
 <div class="candidatosCont">
   <ul>
-    <li>
+    <li [@mouseStatus]="mouseStatus"
+    (mouseover)='over(true)'
+    (mouseout)='over(false)'>
       <div class="photo">
           <img src=".//assets/icon.png"/>
       </div>
