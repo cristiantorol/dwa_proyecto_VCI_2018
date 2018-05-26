@@ -4,73 +4,116 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using VCI_API.Models.DTO;
 
 namespace VCI_API.Models.DAL
 {
-    public class BaseDAL<T> where T : BaseDTO
+    public abstract class BaseDAL<T> where T : BaseDTO
     {
-        private static IMongoClient Client;
-        private IMongoDatabase Database;
-        private IMongoCollection<T> Collection;
+        private static IMongoClient client;
+        private IMongoDatabase database;
+        protected IMongoCollection<T> collection;
 
-        private string DatabaseName;
-        private string CollectionName;
+        private string databaseName;
+        private string collectionName;
+        protected ProjectionDefinition<T> projection;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="CollectionName">Nombre de la colección</param>
-        public BaseDAL(string CollectionName)
+        /// <param name="collectionName">Nombre de la colección</param>
+        public BaseDAL(string collectionName)
         {
-            DatabaseName = ConfigurationManager.AppSettings["DbName"];
-            this.CollectionName = CollectionName;
+            databaseName = ConfigurationManager.AppSettings["DbName"];
+            this.collectionName = collectionName;
 
-            if (Client == null)
+            if (client == null)
             {
-                Client = new MongoClient(ConfigurationManager.AppSettings["DbEndpoint"]);
+                client = new MongoClient(ConfigurationManager.AppSettings["DbEndpoint"]);
             }
-            Database = Client.GetDatabase(DatabaseName);
-            Collection = Database.GetCollection<T>(CollectionName);
+            database = client.GetDatabase(databaseName);
+            collection = database.GetCollection<T>(collectionName);
+            SetBasicProjection();
         }
 
         /// <summary>
-        /// Obtiene un elemento por el Id
+        /// Obtiene un elemento por el Id,  usa la proyeccion basica
         /// </summary>
-        /// <param name="Id">Id del elemento</param>
+        /// <param name="id">Id del elemento</param>
         /// <returns></returns>
-        public async Task<T> GetById(Guid Id)
+        public async Task<T> GetById(Guid id)
         {
-            FilterDefinition<T> Filter = Builders<T>.Filter.Eq("id", Id);
-            FindOptions<T> Options = new FindOptions<T>();
-            Options.Limit = 1;
-            var Cursor = await Collection.FindAsync(Filter, Options);
-            return Cursor.First();
+            FilterDefinition<T> filter = Builders<T>.Filter.Eq("id", id);
+            FindOptions<T> options = new FindOptions<T>();
+            options.Limit = 1;
+            options.Projection = projection;
+            var cursor = await collection.FindAsync(filter, options);
+            return cursor.First();
         }
 
         /// <summary>
-        /// Obtiene todos los elementos de la coleccion
+        /// Obtiene todos los elementos de la coleccion,  usa la proyeccion basica
         /// </summary>
         /// <returns></returns>
-        public List<T> GetAll()
+        public async Task<List<T>> GetAll()
         {
-            FilterDefinition<T> Filter = Builders<T>.Filter.Empty;
-            var Cursor = Collection.Find(Filter);
-            return Cursor.ToList();
+            FilterDefinition<T> filter = Builders<T>.Filter.Empty;
+            FindOptions<T> options = new FindOptions<T>();
+            options.Projection = projection;
+            var cursor = await collection.FindAsync(filter, options);
+            return cursor.ToList();
+        }
+
+        /// <summary>
+        /// Obtiene un objeto por una propiedad, usa la proyeccion basica
+        /// </summary>
+        /// <param name="name">nombre de la propiedad</param>
+        /// <param name="value">valor. Se sugiere que sea un valor unico por objeto</param>
+        /// <returns>Primer objeto que coincida con ese valor</returns>
+        public async Task<T> GetByProperty<G>(string name, G value)
+        {
+            FilterDefinition<T> filter = Builders<T>.Filter.Eq(name, value);
+            FindOptions<T> options = new FindOptions<T>();
+            options.Projection = projection;
+            options.Limit = 1;
+            var cursor = await collection.FindAsync(filter, options);
+            return cursor.First();
+        }
+
+        /// <summary>
+        /// Obtiene el primer elemento que coincida con el filtro
+        /// </summary>
+        /// <param name="filter">filtro</param>
+        /// <returns>primer elemento que coincidio</returns>
+        public async Task<T> GetByFilter(FilterDefinition<T> filter)
+        {
+            FindOptions<T> options = new FindOptions<T>();
+            options.Projection = projection;
+            options.Limit = 1;
+            var cursor = await collection.FindAsync(filter, options);
+            return cursor.First();
         }
 
         /// <summary>
         /// Inserta un elemento en la coleccion
         /// </summary>
-        /// <param name="Element"></param>
+        /// <param name="element"></param>
         /// <returns></returns>
-        public T Insert(T Element)
+        protected T Insert(T element)
         {
-            Element.Id = Guid.NewGuid();
-            Collection.InsertOne(Element);
-            return Element;
+            element.id = Guid.NewGuid();
+            collection.InsertOne(element);
+            return element;
         }
+
+        /// <summary>
+        /// Asigna la proyección basica para las consultas
+        /// </summary>
+        /// <returns></returns>
+        public abstract void SetBasicProjection();
+
+        public abstract T Create(T element);
+        public abstract T Update(T element);
 
     }
 }
