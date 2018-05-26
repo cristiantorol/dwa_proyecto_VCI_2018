@@ -2,12 +2,14 @@
   <ul>
     <li [@mouseStatus]="mouseStatus"
     (mouseover)='over(true)'
-    (mouseout)='over(false)'>
+    (mouseout)='over(false)'
+    
+    (click)="routing()">
       <div class="photo">
           <img src=".//assets/icon.png"/>
       </div>
       <div class="info">
-        <a [routerLink]="['/candidato']" [routerLinkActive]="['classActive']" class="name">NOMBRE</a>
+        <a class="name">NOMBRE</a>
         <p>
             En versiones anteriores de Access, hemos usado el tipo de datos Memo 
             para almacenar grandes cantidades de texto y escriba los datos de texto para 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, state} from '@angular/animations';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-candidatos',
@@ -20,7 +21,11 @@ import { trigger, transition, style, animate, state} from '@angular/animations';
 })
 export class CandidatosComponent implements OnInit {
   mouseStatus: String = 'notOver';
-  constructor() { }
+  constructor(private _router: Router) { }
+
+  routing(){
+    this._router.navigate(['/candidato']);
+  }
 
   over(_state:boolean){
     this.mouseStatus = _state ? 'over' : 'notOver';
