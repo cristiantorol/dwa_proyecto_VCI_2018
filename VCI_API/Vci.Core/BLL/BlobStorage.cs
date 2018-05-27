@@ -20,17 +20,13 @@ namespace VCI.BLL
             BlobClient = StorageAccount.CreateCloudBlobClient();
         }
 
-        public Uri SaveCandidateFoto(Candidate Candidate)
+        public Uri SaveFile(string folder, FileBase64 file)
         {
-            if (string.IsNullOrEmpty(Candidate.ProfileFotoBase64) || string.IsNullOrEmpty(Candidate.ProfileFotoFormat))
-            {
-                return null;
-            }
             CloudBlobContainer CandidateContainer;
             CloudBlockBlob blob;
             Uri result = null;
 
-            CandidateContainer = BlobClient.GetContainerReference(Candidate.Identification);
+            CandidateContainer = BlobClient.GetContainerReference(folder);
 
             if (!CandidateContainer.Exists())
             {
@@ -39,18 +35,15 @@ namespace VCI.BLL
                 new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
             }
 
-            if (Candidate.ProfileFotoFormat.Equals("png") || Candidate.ProfileFotoFormat.Equals("jpg") || Candidate.ProfileFotoFormat.Equals("jpeg"))
+            byte[] Image = Convert.FromBase64String(file.Base64);
+            using (MemoryStream stream = new MemoryStream(Image))
             {
-                byte[] Image = Convert.FromBase64String(Candidate.ProfileFotoBase64);
-                using (MemoryStream stream = new MemoryStream(Image))
-                {
-                    blob = CandidateContainer.GetBlockBlobReference(
-                        string.Format("{0}_profileFoto.{1}", Candidate.Identification, Candidate.ProfileFotoFormat)
-                    );
+                blob = CandidateContainer.GetBlockBlobReference(
+                    string.Format("{0}.{1}", file.Name, file.Format)
+                );
 
-                    blob.UploadFromStream(stream);
-                    result = blob.Uri;
-                }
+                blob.UploadFromStream(stream);
+                result = blob.Uri;
             }
             return result;
         }

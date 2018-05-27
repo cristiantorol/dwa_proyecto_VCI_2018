@@ -17,7 +17,6 @@ namespace VCI.BLL
         private string CollectionName;
 
         protected IMongoCollection<T> Collection;
-        protected ProjectionDefinition<T> Projection;
 
         /// <summary>
         /// Constructor
@@ -34,7 +33,6 @@ namespace VCI.BLL
             }
             Database = Client.GetDatabase(DatabaseName);
             Collection = Database.GetCollection<T>(CollectionName);
-            SetBasicProjection();
         }
 
         /// <summary>
@@ -47,7 +45,6 @@ namespace VCI.BLL
             FilterDefinition<T> filter = Builders<T>.Filter.Eq("id", id);
             FindOptions<T> options = new FindOptions<T>();
             options.Limit = 1;
-            options.Projection = Projection;
             var cursor = await Collection.FindAsync(filter, options);
             return cursor.First();
         }
@@ -60,7 +57,6 @@ namespace VCI.BLL
         {
             FilterDefinition<T> filter = Builders<T>.Filter.Empty;
             FindOptions<T> options = new FindOptions<T>();
-            options.Projection = Projection;
             var cursor = await Collection.FindAsync(filter, options);
             return cursor.ToList();
         }
@@ -75,7 +71,6 @@ namespace VCI.BLL
         {
             FilterDefinition<T> filter = Builders<T>.Filter.Eq(name, value);
             FindOptions<T> options = new FindOptions<T>();
-            options.Projection = Projection;
             options.Limit = 1;
             var cursor = await Collection.FindAsync(filter, options);
             return cursor.First();
@@ -89,7 +84,6 @@ namespace VCI.BLL
         public async Task<T> GetByFilter(FilterDefinition<T> filter)
         {
             FindOptions<T> options = new FindOptions<T>();
-            options.Projection = Projection;
             options.Limit = 1;
             var cursor = await Collection.FindAsync(filter, options);
             return cursor.First();
@@ -109,6 +103,5 @@ namespace VCI.BLL
 
         public abstract T Create(T element);
         public abstract T Update(T element);
-        public abstract void SetBasicProjection();
     }
 }

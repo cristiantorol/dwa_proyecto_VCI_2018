@@ -17,11 +17,6 @@ namespace VCI.BLL
             return Candidate;
         }
 
-        public override void SetBasicProjection()
-        {
-
-        }
-
         public override CandidateDTO Update(CandidateDTO element)
         {
             throw new NotImplementedException();

@@ -2,6 +2,8 @@
 {
     public enum Error
     {
-        Random
+        Random,
+        AllProfessionalTitlesRequiredFile,
+        InternalError
     }
 }

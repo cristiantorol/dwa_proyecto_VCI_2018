@@ -23,9 +23,5 @@ namespace VCI.BLL
             throw new NotImplementedException();
         }
 
-        public override void SetBasicProjection()
-        {
-
-        }
     }
 }

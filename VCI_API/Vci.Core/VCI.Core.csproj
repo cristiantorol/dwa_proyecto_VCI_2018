@@ -77,7 +77,9 @@
     <Compile Include="DTO\Candidate\ProfessionalTitleDTO.cs" />
     <Compile Include="DTO\Candidate\ProposalDTO.cs" />
     <Compile Include="DTO\Request\Candidate.cs" />
+    <Compile Include="DTO\Request\FileBase64.cs" />
     <Compile Include="DTO\Request\Login.cs" />
+    <Compile Include="DTO\Request\ProfessionalTitle.cs" />
     <Compile Include="DTO\Request\Response.cs" />
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="Exceptions\BatAssignmentException.cs" />
