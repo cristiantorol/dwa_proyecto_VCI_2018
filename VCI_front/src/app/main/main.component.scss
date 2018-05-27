@@ -2,9 +2,16 @@
     margin:2% auto;
     width: 90%;
     display: block;
-    background: #ADC7FA;
     height: 100%;
+    background-color:white;
 
+}
+
+.logoCont{
+    img{
+        margin: 0 auto;
+        display: block;
+    }
 }
 
 .videosList{
@@ -15,7 +22,7 @@
 }
 
 .contentCont{
-    
+    background: #F1F10D;
     font-size: 30px;
     display: block;
     font-family: 'Bree Serif', serif;

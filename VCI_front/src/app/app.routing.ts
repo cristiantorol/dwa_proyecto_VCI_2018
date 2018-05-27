@@ -6,6 +6,7 @@ import { CandidatosComponent } from './candidatos/candidatos.component';
 import { CandidatoSinglepageComponent } from './candidato-singlepage/candidato-singlepage.component';
 
 const appRoutes: Routes = [
+        { path:'', component:MainComponent },
         { path:'main', component:MainComponent },
         { path:'candidatos',component:CandidatosComponent},
         { path:'candidato',component:CandidatoSinglepageComponent}
