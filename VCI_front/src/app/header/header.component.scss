@@ -1,7 +1,7 @@
 app-header.menuCont{
     display:block;
-    background-color: #0038A8;
-    border: 1px solid #0038A8;
+    background-color:black;
+    border: 1px solid black;
     top:0;
     left: 0;
     width:100%;
@@ -16,16 +16,22 @@ app-header.menuCont{
             margin-left: 15px;
             border-right: 1px solid;
             padding-right: 28px;
+            
             &:hover{
                 cursor: pointer;
             }
             a{
-                color:#F3F3F3;
+                color:white;
                 text-decoration: none;
                 font-family: 'Anton', sans-serif;
                 font-size: 20px;
                 text-anchor: none;
             }
+            
         }
+    }
+    img{
+        float: right;
+        margin-top: -18px
     }
 }
