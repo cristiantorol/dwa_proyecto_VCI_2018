@@ -2,7 +2,7 @@
     margin:2% auto;
     width: 90%;
     display: block;
-    background: #ADC7FA;
+    background: blue;
     height: 100%;
 }
 
@@ -11,6 +11,7 @@
     width: 18%;
     font-family: 'Fira Sans', sans-serif;
     padding:15px;
+    color:white;
     img{
         width: 200px;
         height: 200px;
@@ -59,5 +60,6 @@
     }
     p{
         font-family: 'Fira Sans', sans-serif;  
+        color:white;
     }
 }
