@@ -12,7 +12,10 @@
     font-family: 'Fira Sans', sans-serif;
     padding:15px;
     color:white;
+    text-align: center;
+    margin-left: 3%;
     img{
+        border-radius: 100%;
         width: 200px;
         height: 200px;
     }
@@ -25,6 +28,7 @@
 
 .propuestasCont{
     margin-top:2%;
+    margin-left: 2%;
     display: inline-block;
     vertical-align: top;  
     width:70%;
