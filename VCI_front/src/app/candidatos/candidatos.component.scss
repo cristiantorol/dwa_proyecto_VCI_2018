@@ -1,11 +1,12 @@
 .candidatosCont{
     margin-top: 30px;
     ul{
-        margin:0 auto;
         list-style: none;
-        width: 77%;
+        margin-top:9%;
+        width: 96%;
         li{
             display:inline-block;
+            vertical-align: top;
             margin-left: 22px;
             .info{
                 margin-top: 89%;
@@ -15,6 +16,7 @@
                     font-family: 'Fira Sans', sans-serif;
                     padding: 10px;
                     color:black;
+                    text-align: center;
                 }
                 .name{
                     display:block;
@@ -31,6 +33,7 @@
             }
             .photo{
                     img{
+                    border-radius: 100%;
                     position: absolute;
                     height: 200px;
                     width: 200px;

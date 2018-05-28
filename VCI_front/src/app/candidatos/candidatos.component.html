@@ -4,73 +4,16 @@
     (mouseover)='over(true)'
     (mouseout)='over(false)'
     
-    (click)="routing()">
+    (click)="routing(i)" *ngFor="let candidato of _candidatos; let i=index"  >
       <div class="photo">
-          <img src=".//assets/icon.png"/>
+          <img src="{{candidato.foto}}"/>
       </div>
       <div class="info">
-        <a class="name">NOMBRE</a>
+        <a class="name">{{candidato.nombre}} {{candidato.apellidos}}</a>
         <p>
-            En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-            para almacenar grandes cantidades de texto y escriba los datos de texto para 
-            almacenar cadenas de más corto (hasta 255 caracteres). En Access 2013 y 2016 de Access, 
-            estos dos tipos de datos han cambiado el nombre "Texto largo" y "Texto corto" 
-            respectivamente y tienen diferentes propiedades y los límites de tamaño dependiendo de 
-            si está utilizando una base de datos de escritorio o una aplicación web de Access. 
-            Estos son los detalles:
+            {{candidato.partido}}
         </p>
       </div>
     </li>
-    <li>
-        <div class="photo">
-            <img src=".//assets/icon.png"/>
-        </div>
-        <div class="info">
-            <a [routerLink]="['/candidato']" [routerLinkActive]="['classActive']" class="name">NOMBRE</a>
-          <p>
-              En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-              para almacenar grandes cantidades de texto y escriba los datos de texto para 
-              almacenar cadenas de más corto (hasta 255 caracteres). En Access 2013 y 2016 de Access, 
-              estos dos tipos de datos han cambiado el nombre "Texto largo" y "Texto corto" 
-              respectivamente y tienen diferentes propiedades y los límites de tamaño dependiendo de 
-              si está utilizando una base de datos de escritorio o una aplicación web de Access. 
-              Estos son los detalles:
-          </p>
-        </div>
-      </li>
-      <li>
-          <div class="photo">
-              <img src=".//assets/icon.png"/>
-          </div>
-          <div class="info">
-            <a [routerLink]="['/candidato']" [routerLinkActive]="['classActive']" class="name">NOMBRE</a>
-            <p>
-                En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-                para almacenar grandes cantidades de texto y escriba los datos de texto para 
-                almacenar cadenas de más corto (hasta 255 caracteres). En Access 2013 y 2016 de Access, 
-                estos dos tipos de datos han cambiado el nombre "Texto largo" y "Texto corto" 
-                respectivamente y tienen diferentes propiedades y los límites de tamaño dependiendo de 
-                si está utilizando una base de datos de escritorio o una aplicación web de Access. 
-                Estos son los detalles:
-            </p>
-          </div>
-        </li>
-        <li>
-            <div class="photo">
-                <img src=".//assets/icon.png"/>
-            </div>
-            <div class="info">
-                <a [routerLink]="['/candidato']" [routerLinkActive]="['classActive']" class="name">NOMBRE</a>
-              <p>
-                  En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-                  para almacenar grandes cantidades de texto y escriba los datos de texto para 
-                  almacenar cadenas de más corto (hasta 255 caracteres). En Access 2013 y 2016 de Access, 
-                  estos dos tipos de datos han cambiado el nombre "Texto largo" y "Texto corto" 
-                  respectivamente y tienen diferentes propiedades y los límites de tamaño dependiendo de 
-                  si está utilizando una base de datos de escritorio o una aplicación web de Access. 
-                  Estos son los detalles:
-              </p>
-            </div>
-          </li>
   </ul>
 </div>
