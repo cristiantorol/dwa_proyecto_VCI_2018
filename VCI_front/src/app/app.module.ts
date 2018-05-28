@@ -8,6 +8,9 @@ import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 import { CandidatosComponent } from './candidatos/candidatos.component';
 import { CandidatoSinglepageComponent } from './candidato-singlepage/candidato-singlepage.component';
+import { AdministradorComponent } from './administrador/administrador.component';
+import { RegistroComponent } from './registro/registro.component';
+import { CandidatosRegistradosComponent } from './candidatos-registrados/candidatos-registrados.component';
 
 
 @NgModule({
@@ -16,7 +19,10 @@ import { CandidatoSinglepageComponent } from './candidato-singlepage/candidato-s
     HeaderComponent,
     MainComponent,
     CandidatosComponent,
-    CandidatoSinglepageComponent
+    CandidatoSinglepageComponent,
+    AdministradorComponent,
+    RegistroComponent,
+    CandidatosRegistradosComponent
   ],
   imports: [
     BrowserModule,
