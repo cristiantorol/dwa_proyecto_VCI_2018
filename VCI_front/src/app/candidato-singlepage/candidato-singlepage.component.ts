@@ -13,6 +13,7 @@ export class CandidatoSinglepageComponent implements OnInit {
   public _propuestas:Array<Propuesta> = [];
   public parametro:String;
   public data: any[];
+  public _fecha: String;
 
   constructor(
     private _route: ActivatedRoute,

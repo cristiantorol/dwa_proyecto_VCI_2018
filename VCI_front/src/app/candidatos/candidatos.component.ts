@@ -53,7 +53,7 @@ export class CandidatosComponent implements OnInit {
             propuestas.push(new Propuesta(result.Result[item].Proposals[i].Title,result.Result[item].Proposals[i].Description));
           }
           this._candidatos.push(new Candidato(result.Result[item].Names,result.Result[item].LastNames,
-            img,date,result.Result[item].Identification,result.Result[item].PoliticParty,
+            img,date[0],result.Result[item].Identification,result.Result[item].PoliticParty,
             result.Result[item].Biography,propuestas));
         }
         console.log(this._candidatos);
