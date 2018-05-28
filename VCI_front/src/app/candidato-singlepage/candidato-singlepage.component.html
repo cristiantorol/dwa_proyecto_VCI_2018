@@ -1,47 +1,18 @@
-<div class="candidatoCont">
+<div *ngIf="parametro" class="candidatoCont">
   <div class="c_infoCont">
-    <img src=".//assets/icon.png" class="c_photo"/>
-    <p class="c_name">NOMBRE</p>
+    <img src="{{data.Result[parametro].ProfileFoto}}" class="c_photo"/>
+    <p class="c_name">{{data.Result[parametro].Names}} {{data.Result[parametro].LastNames}}</p>
     <p>
-      En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-      para almacenar grandes cantidades de texto y escriba los datos de texto para 
-      almacenar cadenas de más corto (hasta 255 caracteres). En Access 2013 y 2016 de Access, En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-      para almacenar grandes cantidades de texto y escriba los datos de texto para 
-      almacenar cadenas de más corto (hasta 255 caracteres).
-      En versiones anteriores de Access, hemos usado el tipo de datos Memo
+      {{data.Result[parametro].BirthDate}}<br>
+      {{data.Result[parametro].PoliticParty}}
     </p>
   </div> 
   <div class="propuestasCont">
     <ul>
-      <li class="animated fadeInRight">
-        <p class="title">SALUD</p>
+      <li *ngFor="let propuesta of _propuestas; let i=index" class="animated fadeInRight">
+        <p class="title">{{propuesta.titulo}}</p>
         <p>
-          En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-          para almacenar grandes cantidades de texto y escriba los datos de texto para 
-          almacenar cadenas de más corto (hasta 255 caracteres).
-        </p>
-      </li>
-      <li class="animated fadeInRight">
-        <p class="title">TRANSPORTE</p>
-        <p>
-          En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-          para almacenar grandes cantidades de texto y escriba los datos de texto para 
-          almacenar cadenas de más corto (hasta 255 caracteres).En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-          para almacenar grandes cantidades de texto y escriba los datos de texto para 
-          almacenar cadenas de más corto (hasta 255 caracteres).
-        </p>
-      </li>
-      <li class="animated fadeInRight">
-        <p class="title">AMBIENTE</p>
-        <p>
-          En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-          para almacenar grandes cantidades de texto y escriba los datos de texto para 
-          almacenar cadenas de más corto (hasta 255 caracteres).En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-          para almacenar grandes cantidades de texto y escriba los datos de texto para 
-          almacenar cadenas de más corto (hasta 255 caracteres).
-          En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-          para almacenar grandes cantidades de texto y escriba los datos de texto para 
-          almacenar cadenas de más corto (hasta 255 caracteres).
+          {{propuesta.descripcion}}
         </p>
       </li>
     </ul>
@@ -49,15 +20,7 @@
     <div class="bioCont">
       <p class="bio_title">BIOGRAFIA</p>
       <p>
-        En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-        para almacenar grandes cantidades de texto y escriba los datos de texto para 
-        almacenar cadenas de más corto (hasta 255 caracteres).
-        En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-        para almacenar grandes cantidades de texto y escriba los datos de texto para 
-        almacenar cadenas de más corto (hasta 255 caracteres).
-        En versiones anteriores de Access, hemos usado el tipo de datos Memo 
-        para almacenar grandes cantidades de texto y escriba los datos de texto para 
-        almacenar cadenas de más corto (hasta 255 caracteres).
+        {{data.Result[parametro].Biography}}
       </p>
     </div>
   </div>

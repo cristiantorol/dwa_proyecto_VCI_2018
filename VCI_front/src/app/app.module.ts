@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { routing, appRoutingProviders } from './app.routing';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-
+import { HttpModule, Http } from '@angular/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
@@ -21,7 +21,8 @@ import { CandidatoSinglepageComponent } from './candidato-singlepage/candidato-s
   imports: [
     BrowserModule,
     routing,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
