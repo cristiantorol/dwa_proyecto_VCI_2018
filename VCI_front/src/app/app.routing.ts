@@ -9,7 +9,8 @@ const appRoutes: Routes = [
         { path:'', component:MainComponent },
         { path:'main', component:MainComponent },
         { path:'candidatos',component:CandidatosComponent},
-        { path:'candidato',component:CandidatoSinglepageComponent}
+        { path:'candidato',component:CandidatoSinglepageComponent},
+        { path:'candidato/:ident', component:CandidatoSinglepageComponent },
         // { path:'**', component:FrutasComponent }
     ];
 
