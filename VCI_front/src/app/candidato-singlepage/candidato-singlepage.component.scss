@@ -67,3 +67,31 @@
         color:white;
     }
 }
+
+
+.partidoVerde, .partidoColombiaHumana, .partidoLiberal, .partidoCentroDemocratico, .partidoCambioRadical{
+    margin:2% auto;
+    width: 90%;
+    display: block;
+    height: 100%;
+}
+
+.partidoVerde{
+    background-color: green;
+}
+
+.partidoColombiaHumana{
+    background-color: purple;
+}
+
+.partidoLiberal{
+    background-color: red;
+}
+
+.partidoCentroDemocratico{
+    background-color: blue;
+}
+
+.partidoCambioRadical{
+    background-color: blue;
+}

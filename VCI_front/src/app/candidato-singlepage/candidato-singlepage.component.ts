@@ -12,7 +12,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 export class CandidatoSinglepageComponent implements OnInit {
   public _propuestas:Array<Propuesta> = [];
   public parametro:String;
-  public data: any[];
+  public data: any;
   public _fecha: String;
 
   constructor(
@@ -28,12 +28,12 @@ export class CandidatoSinglepageComponent implements OnInit {
 
     this.data = JSON.parse(localStorage.getItem("candidatos"));  
     console.log(this.data); 
-    /*for(var j=0;j<4;j++){
+    for(var j=0;j<4;j++){
       this._propuestas.push(new Propuesta(this.data.Result[Number(this.parametro)].Proposals[j].Title,this.data.Result[Number(this.parametro)].Proposals[j].Description));
     }
     console.log(this._propuestas);
 
-    this._fecha = this.data.Result[Number(this.parametro)].BirthDate.split("T",1);*/
+    this._fecha = this.data.Result[Number(this.parametro)].BirthDate.split("T",1);
 
   }
 

@@ -1,4 +1,10 @@
-<div *ngIf="parametro" class="candidatoCont">
+<div *ngIf="parametro" [ngClass]="{
+  partidoLiberal: data.Result[parametro].PoliticParty === 'Partido Liberal',
+  partidoColombiaHumana: data.Result[parametro].PoliticParty === 'Colombia Humana',
+  partidoVerde: data.Result[parametro].PoliticParty === 'Alianza Verde',
+  partidoCambioRadical: data.Result[parametro].PoliticParty === 'Cambio Radical',
+  partidoCentroDemocratico: data.Result[parametro].PoliticParty === 'Centro democratico'
+}">
   <div class="c_infoCont">
     <img src="{{data.Result[parametro].ProfileFoto}}" class="c_photo"/>
     <p class="c_name">{{data.Result[parametro].Names}} {{data.Result[parametro].LastNames}}</p>
