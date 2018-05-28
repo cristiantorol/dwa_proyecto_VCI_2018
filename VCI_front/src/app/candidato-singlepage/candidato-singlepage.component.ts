@@ -33,6 +33,8 @@ export class CandidatoSinglepageComponent implements OnInit {
     }
     console.log(this._propuestas);
 
+    this._fecha = this.data.Result[Number(this.parametro)].BirthDate.split("T",1);
+
   }
 
 }
